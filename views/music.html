@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Music</title>
+<link href="../public/stylesheets/studbud.css" rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" href="../favicon.ico" />
+<script src="../public/javascripts/DateUtil.js"></script>
+</head>
+
+<body>
+<div class="home-box">
+	<div class="home-left">
+		<div class="logo-box"><a href="home.html"><img src="../public/images/logo.png" alt="" /></a></div>
+		<div class="list1"><a href="home.html">Home</a></div>
+		<div class="list2"><a href="task.html">Task</a></div>
+		<div class="list3"><a href="timer1.html">Timer</a></div>
+		<div class="list4-current"><a href="music.html">Music</a></div>
+		<div class="list5"><a href="ReadingList.html">Reading list</a></div>
+	</div>
+	<div class="home-right">
+		<div class="right-top">
+			<p>StudBud - Music</p>						
+			<div class="picture"><a href="#"><img src="../public/images/picture.png"  /></a></div>
+			<div class="news"><a href="#"><img src="../public/images/news.png"  /></a></div>
+		</div>
+		<div class="music-list">
+			<div class="music-mark"></div>
+		    <div class="music-details">
+				<h2>Your Song List</h2>
+				<p>Tianbo Gong</p>
+			    <a href="#" onclick="playAll()"></a>
+			</div>
+		</div>
+		<div class="music-ListBox">
+			<ul>
+			  <li class="distinct">
+			 	 <div class="order">0</div>
+				 <div class="song">Song</div>
+				 <div class="play">0</div>
+				 <div class="singer">Singer</div>
+				 <div class="adddate">Adddate</div>
+				 <div class="duration">Duration</div>
+			  </li>
+			  <li>
+			  	<div class="order">1</div>
+				 <div class="song">Born To Try</div>
+				 <div class="play">
+					 <a href="#"><img src="../public/images/broadcast.png" class="playBut" onclick="autoPlay(this,1)"/></a>
+					 <audio src="../public/music/Born_to_Try_Delta_Goodrem.mp3" id="myAudio1" controls="controls" loop="false" hidden="true"></audio>
+				</div>
+				 <div class="singer">Delta Goodrem</div>
+				 <div class="adddate">Today</div>
+				 <div class="duration">00:00</div>
+			  </li>
+			  <li>
+			  	<div class="order">2</div>
+				 <div class="song">Goodbye My Lover</div>
+				 <div class="play">
+					 <a href="#"><img src="../public/images/broadcast.png" class="playBut" onclick="autoPlay(this,2)" /></a>
+					 <audio src="../public/music/Goodbye_My_Lover_James_Blunt.mp3" id="myAudio2" controls="controls" loop="false" hidden="true"></audio>
+				</div>
+				 <div class="singer">James Blunt</div>
+				 <div class="adddate">3 days ago</div>
+				 <div class="duration">00:00</div>
+			  </li>
+			  <li>
+				<div class="order">3</div>
+			   <div class="song">Still Here</div>
+			   <div class="play">
+				   <a href="#"><img src="../public/images/broadcast.png" class="playBut" onclick="autoPlay(this,3)" /></a>
+				   <audio src="../public/music/Still_Here_Lene_Marlin.mp3" id="myAudio3" controls="controls" loop="false" hidden="true">aaaa</audio>
+			  </div>
+			   <div class="singer">Lene Marlin</div>
+			   <div class="adddate">2 days ago</div>
+			   <div class="duration">00:00</div>
+			  </li>
+			  <li class="newsong">
+			  	<div class="order">0</div>
+				<div class="song"><a href="#" onclick="addSongPrepare()">+ Add new song</a></div>				 
+			  </li>
+		    </ul>
+		</div>
+	</div>
+	<script>
+
+
+        window.onload = function(){
+			let audioList = document.getElementsByTagName("audio");
+			let durationList = document.querySelectorAll('div.duration');
+			for(let i = 0 ; i < audioList.length ; i ++){
+				let audio = audioList[i];
+				let duration = audio.duration ;
+				duration = (parseInt(duration / 60) < 10 ?  "0" + parseInt(duration / 60): parseInt(duration / 60)) + " : " + (parseInt(duration % 60) < 10 ? "0"+parseInt(duration % 60):parseInt(duration % 60) );
+				durationList[i+1].innerHTML = duration ;
+			}
+		}
+		
+		//get add song template
+		function getTemp(){
+			let temp = `
+			<li id="newSong">
+				<div class="order">{orderNo}</div>
+			   <div class="song"><input type="text" name="musicLink" id="musicLink" placeholder="Music Link" /></div>
+			   <div class="play">
+				<input type="text" name="songName" id="songName" placeholder="Song Name"/>
+			  </div>
+			   <div class="singer"><input type="text" name="singer" id="singer" placeholder="Singer"/></div>
+			   <div class="adddate"><button type="button" onclick="addSong()" id="addBut">Save</button></div>
+			   <div class="duration"></div>
+			</li>
+			`;
+			return temp ;
+		}
+
+		function addSongPrepare(){
+			//alert("add song");
+			let newSongLi = document.getElementById("newSong");
+			if(newSongLi){
+				alert("Only one song can be added at a time");
+				return ;
+			}
+			let liList = document.getElementsByTagName("li");
+			let listLength = liList.length ;
+			let liEme = liList[listLength-2];
+			let temp = getTemp();
+			temp = temp.replace("{orderNo}",listLength-1);
+			liEme.insertAdjacentHTML('afterend', temp);
+		}
+
+		//save song
+		function addSong(){
+			let musicLink = document.getElementById("musicLink").value.trim();
+			let songName = document.getElementById("songName").value.trim();
+			let singer = document.getElementById("singer").value.trim();
+			if(!musicLink){
+				alert("Please enter music link");
+				return ;
+			}
+			if(!songName){
+				alert("Please enter Song Name");
+				return ;
+			}
+			if(!singer){
+				alert("Please enter singer");
+				return ;
+			}
+
+			//save data 
+
+			//replace data 
+			let liList = document.getElementsByTagName("li");
+			let orderNo = liList.length - 2 ;
+			let audioHtml = '<audio src="{link}" id="myAudio{orderNo}" controls="controls" loop="false" hidden="true"></audio>' ;
+			audioHtml = audioHtml.replace("{link}",musicLink).replace("{orderNo}",orderNo);
+			let imgButHtml = '<a href="#"><img src="../public/images/broadcast.png" class="playBut" onclick="autoPlay(this,{orderNo}})" /></a>'.replace("{orderNo}",orderNo) ;
+			document.getElementById("musicLink").parentNode.parentNode.removeAttribute("id");
+			document.getElementById("musicLink").parentNode.innerHTML = songName;
+			document.getElementById("songName").parentNode.innerHTML = imgButHtml + audioHtml;
+			document.getElementById("singer").parentNode.innerHTML = singer;
+			let divElm = document.getElementById("addBut").parentNode;
+			divElm.innerHTML = new Date().format('yyyy-MM-dd');
+			let duration = document.getElementById("myAudio"+orderNo).duration;
+			duration = (parseInt(duration / 60) < 10 ?  "0" + parseInt(duration / 60): parseInt(duration / 60)) + " : " + (parseInt(duration % 60) < 10 ? "0"+parseInt(duration % 60):parseInt(duration % 60) );
+			divElm.nextSibling.innerHTML = duration ;
+			
+		}
+
+
+		//play all songs
+		function playAll(){
+			let audioList = document.getElementsByTagName("audio");
+			let imgList = document.querySelectorAll('img.playBut');
+			let arrNex=0;     
+			for(let i = 0 ; i < audioList.length ; i ++){//
+				audioList[i].addEventListener("ended", function () {
+					arrNex = arrNex + 1;
+					if(arrNex<audioList.length){
+						audioList[arrNex].play();
+						return;
+					}
+				}, false);
+
+			}
+			autoPlay(imgList[0],1);// play first song
+
+		}
+
+		//play one song
+	    function autoPlay(thiz,index) {
+			let imgSrc = thiz.src ;
+			let myAudio = document.getElementById('myAudio'+index);
+			if(imgSrc.indexOf("broadcast.png")!=-1){//play music
+				let audioList = document.getElementsByTagName("audio");
+				let imgList = document.querySelectorAll('img.playBut');
+				for(let i = 0 ; i < audioList.length ; i ++){// stop all music
+					audioList[i].pause();
+					imgList[i].src = imgList[i].src.replace("suspend.png","broadcast.png");
+				}
+				myAudio.play();
+				thiz.src = imgSrc.replace("broadcast.png","suspend.png");
+				if(document.querySelector("li.current-play")){
+					document.querySelector("li.current-play").classList.remove("current-play");
+				}
+				thiz.parentNode.parentNode.parentNode.classList.add("current-play");
+			}else{// pause music
+				thiz.src = imgSrc.replace("suspend.png","broadcast.png");
+				myAudio.pause();
+			}
+            
+        }
+
+
+</script>
+</div>
+</body>
+</html>
