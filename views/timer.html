@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Timer</title>
+<link href="../public/stylesheets/studbud.css" rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" href="../favicon.ico" />
+<script>
+		let timer1 ,timer2, timer3;//set global timer1, timer2, timer3
+		let minuteInput1 , secondInput1, minuteInput2, secondInput2,minuteInput3,secondInput3;
+		let minute1, minute2, minute3 , second1, second2 , second3;
+		let countNum = 0 ;
+		const intervalTime = 1000 ; //time interval
+		const maxRound = 4 ;// Number of cycles
+
+		function changeWorkingTime(){
+			timer1 = setInterval(function(){
+
+				if(countNum == maxRound){
+					clearInterval(timer1);
+					changeLongBreakingTime();
+					return ;
+				}
+
+				if(secondInput1.value == 0 && minuteInput1.value == 0){
+					clearInterval(timer1);
+					changeBreakingTime();
+				}else{
+					if(secondInput1.value == 0){
+						minuteInput1.value -= 1 ;
+						secondInput1.value = 59 ;
+					}else{
+						secondInput1.value -= 1 ;
+					}
+				}
+
+					
+				},intervalTime);
+		}
+
+		function changeBreakingTime(){
+			timer2 = setInterval(function(){
+
+				if(countNum == maxRound){
+					clearInterval(timer2);
+					changeLongBreakingTime();
+					return ;
+				}
+
+				if(secondInput2.value == 0 && minuteInput2.value == 0){
+					countNum ++ ;
+					minuteInput1.value = minute1;
+        			secondInput1.value = second1;
+					clearInterval(timer2);
+					changeWorkingTime();
+					minuteInput2.value = minute2;
+        			secondInput2.value = second2;
+				}else{
+					if(secondInput2.value == 0){
+						minuteInput2.value -= 1 ;
+						secondInput2.value = 59 ;
+					}else{
+						secondInput2.value -= 1 ;
+					}
+				}
+
+				},intervalTime);
+		}
+
+		function changeLongBreakingTime(){
+			minuteInput1.value = "00";
+			minuteInput2.value = "00";
+			secondInput1.value = "00" ;
+			secondInput2.value = "00" ;
+			timer3 = setInterval(function(){
+				if(secondInput3.value == 0 && minuteInput3.value == 0){
+					clearTimer();
+					countNum = 0 ;
+					minuteInput1.value = minute1;
+					minuteInput2.value = minute2;
+					secondInput1.value = second1 ;
+					secondInput2.value = second2 ;
+					minuteInput3.value = minute3;
+					secondInput3.value = second3;
+					let imgObj = document.getElementById("changeTimeImg");
+					imgObj.src = imgObj.src.replace("stop.png","start.png");
+				}else{
+					if(secondInput3.value == 0){
+						minuteInput3.value -= 1 ;
+						secondInput3.value = 59 ;
+					}else{
+						secondInput3.value -= 1 ;
+					}
+				}
+
+				},intervalTime);
+		}
+
+		function changeTime(thiz){
+
+			minuteInput1 = document.getElementById("minute1");
+		    secondInput1 = document.getElementById('second1');
+			minuteInput2 = document.getElementById("minute2");
+		    secondInput2 = document.getElementById('second2');
+			minuteInput3 = document.getElementById("minute3");
+		    secondInput3 = document.getElementById('second3');
+
+			minute1 = minuteInput1.value ;
+			minute2 = minuteInput2.value ;
+			minute3 = minuteInput3.value ;
+			second1 = secondInput1.value ;
+			second2 = secondInput2.value ;
+			second3 = secondInput3.value ;
+
+			let imgSrc = thiz.src;
+			// start timer
+			if(imgSrc.indexOf("start.png") != -1){
+				thiz.src = thiz.src.replace("start.png","stop.png");
+				changeWorkingTime();
+			}else{// pause timer
+				thiz.src = thiz.src.replace("stop.png","start.png");
+				clearTimer();
+			}
+		}
+
+		function clearTimer(){
+			if(timer1){
+				clearInterval(timer1);
+			}
+			if(timer2){
+				clearInterval(timer2);
+			}
+			if(timer3){
+				clearInterval(timer3);
+			}
+		}
+
+		function resetTime(){
+
+			clearTimer();
+
+			document.getElementById("minute1").value = 25;
+        	document.getElementById('second1').value = "00";
+			document.getElementById("minute2").value = "05";
+        	document.getElementById('second2').value = "00";
+			document.getElementById("minute3").value = 30;
+        	document.getElementById('second3').value = "00";
+
+			let imgObj = document.getElementById("changeTimeImg");
+			imgObj.src = imgObj.src.replace("stop.png","start.png");
+			countNum = 1 ;
+		}
+</script>
+</head>
+
+<body>
+<div class="home-box">
+	<div class="home-left">
+		<div class="logo-box"><a href="home.html"><img src="../public/images/logo.png" alt="" /></a></div>
+		<div class="list1"><a href="home.html">Home</a></div>
+		<div class="list2"><a href="task.html">Task</a></div>
+		<div class="list3-current"><a href="timer1.html">Timer</a></div>
+		<div class="list4"><a href="music.html">Music</a></div>
+		<div class="list5"><a href="ReadingList.html">Reading list</a></div>
+	</div>
+	<div class="home-right">
+		<div class="right-top">
+			<p>StudBud - Timer</p>						
+			<div class="picture"><a href="#"><img src="../public/images/picture.png" alt="" /></a></div>
+			<div class="news"><a href="#"><img src="../public/images/news.png" alt="" /></a></div>
+		</div>
+		<div class="timer-box">
+			<div class="timer-content">
+				<div class="timer-left">
+					<div class="timer-show">					
+					  <ul>
+					    <li>Working</li>
+					    <li>Short Breaking</li>
+					    <li>Long Breaking</li>
+				      </ul>
+					  <ul>
+					    <li>
+							<span>
+								<input type="number" id="minute1" value="25" min="00" max="60"/>
+							</span>
+							<span>:</span>
+							<span>
+								<input type="number" id="second1" value="00" min="00" max="59"/>
+							</span>
+						</li>
+					    <li>
+							<span>
+								<input type="number" id="minute2" value="05" min="00" max="60"/>
+							</span>
+							<span>:</span>
+							<span>
+								<input type="number" id="second2" value="00" min="00" max="59"/>
+							</span>
+						</li>
+					    <li>
+							<span>
+								<input type="number" id="minute3" value="30" min="00" max="60"/>
+							</span>
+							<span>:</span>
+							<span>
+								<input type="number" id="second3" value="00" min="00" max="59"/>
+							</span>
+						</li>
+				      </ul>
+				    </div>
+					<div class="common-box">
+						<ul>
+					    <li><a href="#"><img src="../public/images/reset.png" onclick="resetTime()"></a></li>
+					    <li><a href="#"><img src="../public/images/start.png" id="changeTimeImg" onclick="changeTime(this)"></a></li>					    
+				      </ul>
+					</div>
+				</div>
+				<div class="timer-over"><a href="timer1.html"><img src="../public/images/over.png" ></a></div>
+			</div>	
+		</div>	
+	</div>
+</div>
+</body>
+</html>
