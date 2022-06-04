@@ -78,12 +78,16 @@ ul{	list-style-type: none;}
 .timer-over{width:10%;float:left;padding-top:70px;}
 .timer-show li {float:left;width:33%;text-align:center;font-size:60px;font-weight: bold;}
 .common-box li {float:left;width:50%;text-align:center;}
-.reading-red,.reading-blue,.reading-green{width:100%;background-color:#FFFFFF;border-radius:15px;margin-bottom:30px;font-family:"Segoe UI Symbol";font-size:20px;color:#707070;font-weight:bold;display:table}
+.reading-red,.reading-blue,.reading-green, .reading-new{width:100%;background-color:#FFFFFF;border-radius:15px;margin-bottom:30px;font-family:"Segoe UI Symbol";font-size:20px;color:#707070;font-weight:bold;display:table}
 .reading-red{background-image: url(../images/pic1.png);background-repeat: no-repeat;background-position: left top;}
 .reading-green{background-image: url(../images/pic3.png);background-repeat: no-repeat;background-position: left top;}
 
+.reading-add{width:230px;background-color:#FFFFFF;border-radius:15px;margin-bottom:30px;font-family:"Segoe UI Symbol";font-size:20px;color:#707070;font-weight:bold;display:table;}
+.reading-add button{width: 230px; height:35px;line-height:35px;font-size:25px;}
+
 .reading-red div {float: left;}
 .reading-red input,.reading-red button{width: 90%; height:35px;line-height:35px;font-size:25px;}
+.reading-new input,.reading-new button{width: 90%; height:35px;line-height:35px;font-size:25px;}
 .reading-ioc{width:4%;padding-left:30px;font-size: 0px;}
 .reading-title{width:49%;padding-left:20px;font-weight:bold;font-size:28px;}
 .title-time{width:22%;border-right:solid 3px #EDEDE9;text-align:center;}
@@ -97,7 +101,7 @@ ul{	list-style-type: none;}
 .title-current .reading-ioc{background-color:#FFE9D4;}
 .title-current .reading-content{background-color:#FFE9D4;}
 .title-current .reading-choice{background-color:#FFE9D4;}
-.reading-Popup{z-index: 999;width:248px;height:118px;border:solid 1px #FF7B00;position:absolute;background-color:#FFF;padding:10px;border-radius:15px;color:#707070;font-family:"Segoe UI Symbol";font-weight:bold;}
+.reading-Popup{z-index: 999;width:248px;height:118px;border:solid 1px #FF7B00;position:sticky;background-color:#FFF;padding:10px;border-radius:15px;color:#707070;font-family:"Segoe UI Symbol";font-weight:bold;}
 .reading-Popup li{line-height:32px;padding-left:25px;}
 .reading-Popup li:hover{background-color:#D4D4D4;border-radius:8px;}
 .reading-Popup .red {background-image: url(../images/pic8.png);background-repeat: no-repeat;background-position: 5px center;}

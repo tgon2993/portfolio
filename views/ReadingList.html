@@ -37,22 +37,22 @@
 				<li class="Date">Date</li>
 			</ul>
 			<ul class="data">
-				<li class="Name"><a href="" target="_blank">Sharing the Evertdy</a></li>
-				<li class="Link"><a href="#" target="_blank">https://www.baidu.com</a></li>
-				<li class="Author">Humpjheys,L</li>
-				<li class="Date">2018</li>
+				<li class="Name" onclick="editData1(this)"><a href="https://muse-jhu-edu.ezproxy.library.sydney.edu.au/book/58689" target="_blank">Sharing the Everyday</a></li>
+				<li class="Link" onclick="editData2(this)"><a href="https://muse-jhu-edu.ezproxy.library.sydney.edu.au/book/58689" target="_blank">https://muse-jhu-edu.ezproxy.library.sydney.edu.au/book/58689</a></li>
+				<li class="Author" onclick="editData3(this)">Lee Humphreys</li>
+				<li class="Date">2021-10-02</li>
 			</ul>
 			<ul class="data">
-				<li class="Name"><a href="" target="_blank">Sharing the Evertdy</a></li>
-				<li class="Link"><a href="#" target="_blank">https://www.baidu.com</a></li>
-				<li class="Author">Humpjheys,L</li>
-				<li class="Date">2018</li>
+				<li class="Name" onclick="editData1(this)"><a href="https://www.baidu.com" target="_blank">baidu</a></li>
+				<li class="Link" onclick="editData2(this)"><a href="https://www.baidu.com" target="_blank">https://www.baidu.com</a></li>
+				<li class="Author" onclick="editData3(this)">Li Yanhong</li>
+				<li class="Date">2019-10-09</li>
 			</ul>
 			<ul class="data">
-				<li class="Name"><a href="" target="_blank">Sharing the Evertdy</a></li>
-				<li class="Link"><a href="https://www.baidu.com" target="_blank">https://www.baidu.com</a></li>
-				<li class="Author">Humpjheys,L</li>
-				<li class="Date">2018</li>
+				<li class="Name" onclick="editData1(this)"><a href="https://www.taobao.com" target="_blank">taobao</a></li>
+				<li class="Link" onclick="editData2(this)"><a href="https://www.taobao.com" target="_blank">https://www.taobao.com</a></li>
+				<li class="Author" onclick="editData3(this)">Ma Yun</li>
+				<li class="Date">2018-10-10</li>
 			</ul>
 
 			<ul class="data">
@@ -66,16 +66,104 @@
 </div>
 <script>
 
+	function isUrl(urlStr){
+		let reg=/^([hH][tT]{2}[pP]s?:\/\/|[hH][tT]{2}[pP][sS]:\/\/)/; 
+		if(!reg.test(urlStr)){ 
+			return false;
+		}
+		return true ;
+	}
+
+	function editData1(thiz) {
+		let activeInput = document.getElementsByClassName('active-input');
+		if(activeInput.length > 0){
+			return ;
+		}
+		let data = thiz.firstChild.innerHTML;
+		var input = document.createElement("input");
+		input.value = data ;
+		input.setAttribute("class", "active-input");
+		thiz.innerHTML = '';
+        thiz.appendChild(input);
+		input.focus();
+		input.onblur = function(){
+			let name = input.value;
+			if(!name.trim()){
+				alert("Please enter the Name");
+				//input.focus();
+				return ;
+			}
+			let href = thiz.nextElementSibling.firstChild.innerHTML;
+			let insertHtml = '<a href="{href}" target="_blank">{name}</a>' ;
+			insertHtml = insertHtml.replace("{href}",href).replace("{name}",name);
+		    thiz.innerHTML = insertHtml;
+		}
+
+	}
+
+	function editData2(thiz) {
+		let activeInput = document.getElementsByClassName('active-input');
+		if(activeInput.length > 0){
+			return ;
+		}
+		let data = thiz.firstChild.innerHTML ;
+		var input = document.createElement("input");
+		input.value = data ;
+		input.setAttribute("class", "active-input");
+		thiz.innerHTML = '';
+        thiz.appendChild(input);
+		input.focus();
+		input.onblur = function(){
+			let href = input.value;
+			if(!isUrl(href)){
+				alert("Please enter a valid web address");
+				//input.focus();
+				return ;
+			}
+			let insertHtml = '<a href="{href}" target="_blank">{href}</a>' ;
+			//alert(insertHtml);
+			insertHtml = insertHtml.replace("{href}",href).replace("{href}",href);
+		    thiz.previousElementSibling.firstChild.setAttribute("href",href);
+		    thiz.innerHTML = insertHtml;
+		}
+
+	}
+
+	//点击编辑文本框事件
+	function editData3(thiz) {
+		let activeInput = document.getElementsByClassName('active-input');
+		let inputEl = thiz.getElementsByTagName("input");
+		if(activeInput.length > 0){
+			return ;
+		}
+		let data = inputEl.length > 0 ? inputEl[0].value : thiz.innerHTML;
+		var input = inputEl.length > 0 ? inputEl[0] : document.createElement("input");
+		input.value = data ;
+		input.setAttribute("class", "active-input");
+		thiz.innerHTML = '';
+        thiz.appendChild(input);
+		input.focus();
+		input.onblur = function(){
+			if(!input.value.trim()){
+				alert("Please enter the Author");
+				//input.focus();
+				return ;
+			}
+			thiz.innerHTML = input.value;
+		}
+
+	}
+
 	function getTemp(){
 		let temp = `
 		<ul class="data" id="addNews">
-				<li class="Name"><input type="text" name="name" placeholder="Name" id="refName"/></li>
-				<li class="Link"><input type="text" name="link" placeholder="Link" id="refLink"/></li>
-				<li class="Author"><input type="text" name="author" placeholder="Author" id="refAuthor"/></li>
-				<li class="Date"><button type="button" onclick="addRef()" id="saveBut">Save</button></li>
+				<li class="Name" onclick="editData1(this)"><input type="text" name="name" placeholder="Name" id="refName" /></li>
+				<li class="Link" onclick="editData2(this)"><input type="text" name="link" placeholder="Link" id="refLink" /></li>
+				<li class="Author" onclick="editData3(this)"><input type="text" name="Author" placeholder="Author" id="Author" /></li>
+				<li class="Date">{date}</li>
 		</ul>
 		`;
-		return temp ;
+		return temp.replace("{date}",new Date().format("yyyy-MM-dd")) ;
 	}
 
 	function addRefPrepare(){
@@ -89,6 +177,11 @@
 		let ulEme = ulList[listLength-2];
 		let temp = getTemp();
 		ulEme.insertAdjacentHTML('afterend', temp);
+		newLi = document.getElementById("addNews");
+		let liEms = newLi.getElementsByTagName("li");
+		liEms[0].click();
+		liEms[1].click();
+		liEms[2].click();
 	}
 
 	//save reference

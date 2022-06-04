@@ -36,7 +36,57 @@ function diffTime(strDate1,strDate2){
     let seconds = parseInt(difftime%60);  // 以60秒为一整份 取余 剩下秒数
 
     let diffTim = days+"days,"+hours+"hours";
+    if(days < 0 && hours < 0){
+        return "0day,0hour" ;
+    }
    	//alert("时间差是: " + diffTim);	
     return diffTim ;
 }
 
+function isDate(strDate) {
+    const dateReg = /^\d{4}(\-)\d{1,2}\1\d{1,2}$/;
+    if(!dateReg.test(strDate)){
+        return false;
+    }
+
+    let dateArr = strDate.split("-");
+    if(dateArr.length != 3){
+        return false;
+    }
+    let YYYY = dateArr[0] - 0;
+    let MM = dateArr[1]- 0 ;
+    let DD = dateArr[2] - 0;
+    if (!(MM >= 1 && MM <= 12)) {
+        
+        return false;
+    }
+    switch (MM) {
+        case 1:
+        case 3:
+        case 5:
+        case 7:
+        case 8:
+        case 10:
+        case 12:
+            if (!(DD >= 1 && DD <= 31)) {
+                alert("Illegal date ");
+                return false;
+            }
+            break;
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+            if (!(DD >= 1 && DD <= 30)) {
+                alert("Illegal date ");
+                return false;
+            }
+            break;
+        case 2:
+            if (!(DD >= 1 && DD <= 29)) {
+                alert("Illegal date ");
+                  return false;
+            }
+    }
+    return true ;
+}
