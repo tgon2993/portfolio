@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Timer</title>
+<link href="../public/stylesheets/studbud.css" rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" href="../favicon.ico" />
+<script>
+
+		let timer ;// set global timer
+		const intervalTime = 1000 ;
+		function changeTime(thiz){
+
+			let minuteInput = document.getElementById("minute");
+        	let secondInput = document.getElementById('second');
+			let hourInput = document.getElementById('hour');
+			let minute = minuteInput.value;
+			let second = secondInput.value;
+
+			var imgSrc = thiz.src;
+			// start timer
+			if(imgSrc.indexOf("start.png") != -1){
+				thiz.src = thiz.src.replace("start.png","stop.png");
+				timer = setInterval(function(){
+					if(secondInput.value == 59 && minuteInput.value == 59){
+						hourInput.value = Number(hourInput.value) + 1 ;
+						minuteInput.value = "00" ;
+						secondInput.value = "00" ;
+						return ;
+					}
+					if(secondInput.value == 59){
+						minuteInput.value = Number(minuteInput.value) + 1 ;
+						secondInput.value = "00" ;
+						return ;
+					}else{
+						secondInput.value = Number(secondInput.value) + 1 ;
+					}
+				},intervalTime);
+
+			}else{// pause timer
+				thiz.src = thiz.src.replace("stop.png","start.png");
+				clearInterval(timer);
+			}
+		}
+
+		function resetTime(){
+			if(timer){
+				clearInterval(timer);
+			}
+			document.getElementById("minute").value = "00";
+        	document.getElementById('second').value = "00";
+			document.getElementById('hour').value = "00";
+			let imgObj = document.getElementById("changeTimeImg");
+			imgObj.src = imgObj.src.replace("stop.png","start.png");
+		}
+
+</script>
+</head>
+
+<body>
+<div class="home-box">
+	<div class="home-left">
+		<div class="logo-box"><a href="home.html"><img src="../public/images/logo.png" alt="" /></a></div>
+		<div class="list1"><a href="home.html">Home</a></div>
+		<div class="list2"><a href="task.html">Task</a></div>
+		<div class="list3-current"><a href="timer1.html">Timer</a></div>
+		<div class="list4"><a href="music.html">Music</a></div>
+		<div class="list5"><a href="ReadingList.html">Reading list</a></div>
+	</div>
+	<div class="home-right">
+		<div class="right-top">
+			<p>StudBud - Timer</p>						
+			<div class="picture"><a href="#"><img src="../public/images/picture.png" alt="" /></a></div>
+			<div class="news"><a href="#"><img src="../public/images/news.png" alt="" /></a></div>
+		</div>
+		<div class="timer-box">
+			<div class="timer-content">
+				<div class="timer-left">
+					<div class="timer1">
+						<span>
+							<input type="number" id="hour" value="00" min="00" max="60" readonly/>
+							</span>
+						<span>
+						<span>:</span>
+						<input type="number" id="minute" value="00" min="00" max="60" readonly/>
+						</span>
+						 <span>:</span>
+						 <span>
+						<input type="number" id="second" value="00" min="00" max="59" readonly/>
+					    </span>
+					</div>
+					<div class="common-box">
+						<ul>
+					    <li><a href="#"><img src="../public/images/reset.png" onclick="resetTime()"></a></li>
+					    <li><a href="#"><img src="../public/images/start.png" id="changeTimeImg" onclick="changeTime(this)"></a></li>					    
+				      </ul>
+					</div>
+				</div>
+				<div class="timer-over"><a href="timer.html"><img src="../public/images/over.png"></a></div>
+			</div>	
+		</div>	
+	</div>
+</div>
+</body>
+</html>
