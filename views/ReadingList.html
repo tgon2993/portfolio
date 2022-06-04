@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Reading List</title>
+<link href="../public/stylesheets/studbud.css" rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" href="../favicon.ico" />
+<script src="../public/javascripts/DateUtil.js"></script>
+</head>
+
+<body>
+<div class="home-box">
+	<div class="home-left">
+		<div class="logo-box"><a href="home.html"><img src="../public/images/logo.png" alt="" /></a></div>
+		<div class="list1"><a href="home.html">Home</a></div>
+		<div class="list2"><a href="task.html">Task</a></div>
+		<div class="list3"><a href="timer1.html">Timer</a></div>
+		<div class="list4"><a href="music.html">Music</a></div>
+		<div class="list5-current"><a href="ReadingList.html">Reading list</a></div>
+	</div>
+	<div class="home-right">
+		<div class="right-top">
+			<p>StudBud - Reading List</p>						
+			<div class="picture"><a href="#"><img src="../public/images/picture.png" alt="" /></a></div>
+			<div class="news"><a href="#"><img src="../public/images/news.png" alt="" /></a></div>
+		</div>
+		<div class="search-box">
+			<div class="search-frame">
+			<a href="#"><img src="../public/images/search.png"></a>
+			<input name="" type="text">
+		  </div>
+		</div>	
+		<div class="reading">
+			<ul class="title">
+				<li class="Name">Name</li>
+				<li class="Link">Link</li>
+				<li class="Author">Author</li>
+				<li class="Date">Date</li>
+			</ul>
+			<ul class="data">
+				<li class="Name"><a href="" target="_blank">Sharing the Evertdy</a></li>
+				<li class="Link"><a href="#" target="_blank">https://www.baidu.com</a></li>
+				<li class="Author">Humpjheys,L</li>
+				<li class="Date">2018</li>
+			</ul>
+			<ul class="data">
+				<li class="Name"><a href="" target="_blank">Sharing the Evertdy</a></li>
+				<li class="Link"><a href="#" target="_blank">https://www.baidu.com</a></li>
+				<li class="Author">Humpjheys,L</li>
+				<li class="Date">2018</li>
+			</ul>
+			<ul class="data">
+				<li class="Name"><a href="" target="_blank">Sharing the Evertdy</a></li>
+				<li class="Link"><a href="https://www.baidu.com" target="_blank">https://www.baidu.com</a></li>
+				<li class="Author">Humpjheys,L</li>
+				<li class="Date">2018</li>
+			</ul>
+
+			<ul class="data">
+				<li class="Name"><a href="#" onclick="addRefPrepare()">+ Add new</a></li>
+				<li class="Link"></li>
+				<li class="Author"></li>
+				<li class="Date"></li>
+			</ul>
+		</div>		
+	</div>
+</div>
+<script>
+
+	function getTemp(){
+		let temp = `
+		<ul class="data" id="addNews">
+				<li class="Name"><input type="text" name="name" placeholder="Name" id="refName"/></li>
+				<li class="Link"><input type="text" name="link" placeholder="Link" id="refLink"/></li>
+				<li class="Author"><input type="text" name="author" placeholder="Author" id="refAuthor"/></li>
+				<li class="Date"><button type="button" onclick="addRef()" id="saveBut">Save</button></li>
+		</ul>
+		`;
+		return temp ;
+	}
+
+	function addRefPrepare(){
+		let newLi = document.getElementById("addNews");
+			if(newLi){
+				alert("Only one reference can be added at a time");
+				return ;
+			}
+		let ulList = document.getElementsByTagName("ul");
+		let listLength = ulList.length ;
+		let ulEme = ulList[listLength-2];
+		let temp = getTemp();
+		ulEme.insertAdjacentHTML('afterend', temp);
+	}
+
+	//save reference
+	function addRef(){
+		let name = document.getElementById("refName").value.trim();
+		let link = document.getElementById("refLink").value.trim();
+		let author = document.getElementById("refAuthor").value.trim();
+		if(!name){
+			alert("Please enter name");
+			return ;
+		}
+		if(!link){
+			alert("Please enter link");
+			return ;
+		}
+		if(!author){
+			alert("Please enter author");
+			return ;
+		}
+
+		//save data 
+
+		//replace data 
+		document.getElementById("refName").parentNode.parentNode.removeAttribute("id");
+		document.getElementById("refName").parentNode.innerHTML = "<a href='{link}' target=_blank'>{name}</a>".replace("{link}",link).replace("{name}",name);
+		document.getElementById("refLink").parentNode.innerHTML = "<a href='{link}' target=_blank'>{link}</a>".replaceAll("{link}",link);
+		document.getElementById("refAuthor").parentNode.innerHTML = author;
+		document.getElementById("saveBut").parentNode.innerHTML = new Date().format('yyyy-MM-dd');
+		
+	}
+</script>
+</body>
+</html>
