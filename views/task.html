@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Task</title>
+<link href="../public/stylesheets/studbud.css" rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" href="../favicon.ico" />
+<script src="../public/javascripts/DateUtil.js"></script>
+</head>
+
+<body>
+<div class="home-box">
+	<div class="home-left">
+		<div class="logo-box"><a href="home.html"><img src="../public/images/logo.png" alt="" /></a></div>
+		<div class="list1"><a href="home.html">Home</a></div>
+		<div class="list2-current"><a href="task.html">Task</a></div>
+		<div class="list3"><a href="timer1.html">Timer</a></div>
+		<div class="list4"><a href="music.html">Music</a></div>
+		<div class="list5"><a href="ReadingList.html">Reading list</a></div>
+	</div>
+	<div class="home-right">
+		<div class="right-top">
+			<p>StudBud - Task</p>						
+			<div class="picture"><a href="#"><img src="../public/images/picture.png" alt="" /></a></div>
+			<div class="news"><a href="#"><img src="../public/images/news.png" alt="" /></a></div>
+		</div>
+		<div class="search-box">
+			<div class="search-frame">
+			<a href="#"><img src="../public/images/search.png"></a>
+			<input name="" type="text">
+		  </div>
+		</div>
+		<div class="reading-red">						
+		  <div class="title-content">		  
+		    <ul>
+		      <li class="reading-ioc" ><img src="../public/images/down.png"></li>
+		      <li class="reading-title">Close to Deadline</li>
+		      <li class="reading-choice">0</li>
+			  <li class="title-time">Completion time</li>
+			  <li class="title-date">Due date</li>
+	        </ul>
+	      </div>
+		  <div class="title-current">		  
+		    <ul>
+		      <li class="reading-ioc"><img src="../public/images/priority_1.png" onmouseover="showPriority(this)"></li>
+		      <li class="reading-content">Cloes omr dsdgoing</li>
+		      <li class="reading-choice"><a href="#"><img src="../public/images/pic10.png" ></a></li>
+			  <li class="title-time">3day,10hours</li>
+			  <li class="title-date">2022-06-06</li>
+	        </ul>
+	      </div>
+		  <div class="title-content">		  
+		    <ul>
+		      <li class="reading-ioc"><img src="../public/images/priority_0.png" onmouseover="showPriority(this)"></li>
+		      <li class="reading-content">Cloes omr dsdgoing</li>
+		      <li class="reading-choice"><a href="#"><img src="../public/images/pic9.png" ></a></li>
+			  <li class="title-time">3day,10hours</li>
+			  <li class="title-date">2022-06-06</li>
+	        </ul>
+	      </div>
+		  <div class="title-content">		  
+		    <ul>
+		      <li class="reading-ioc"><img src="../public/images/priority_0.png" onmouseover="showPriority(this)"></li>
+		      <li class="reading-content">Cloes omr dsdgoing</li>
+		      <li class="reading-choice"><a href="#"><img src="../public/images/pic9.png" ></a></li>
+			  <li class="title-time">3day,10hours</li>
+			  <li class="title-date">2022-06-06</li>
+	        </ul>
+	      </div>
+		  <div class="title-content">		  
+		    <ul>
+		      <li class="reading-ioc">0</li>
+		      <li class="reading-content"><a href="#" onclick="addTaskPrepare(this)">+ Add New tasks</a></li>		      
+	        </ul>
+	      </div>		 
+	    </div>
+		<div class="reading-blue">
+		 <div class="title-content">		  
+		    <ul>
+		      <li class="reading-ioc"><img src="../public/images/down.png"></li>
+		      <li class="reading-title">In Progress</li>
+		      <li class="reading-choice">0</li>
+			  <li class="title-time">Completion time</li>
+			  <li class="title-date">Due date</li>
+	        </ul>
+	      </div>
+		  <div class="title-content">		  
+		    <ul>
+		      <li class="reading-ioc"><img src="../public/images/priority_0.png" onmouseover="showPriority(this)"></li>
+		      <li class="reading-content">Cloes omr dsdgoing</li>
+		      <li class="reading-choice"><a href="#"><img src="../public/images/pic9.png" ></a></li>
+			  <li class="title-time">3day,10hours</li>
+			  <li class="title-date">2022-06-06</li>
+	        </ul>
+	      </div>
+		  <div class="title-content">		  
+		    <ul>
+		      <li class="reading-ioc"><img src="../public/images/priority_0.png" onmouseover="showPriority(this)"></li>
+		      <li class="reading-content">Cloes omr dsdgoing</li>
+		      <li class="reading-choice"><a href="#"><img src="../public/images/pic9.png" ></a></li>
+			  <li class="title-time">3day,10hours</li>
+			  <li class="title-date">2022-06-06</li>
+	        </ul>
+	      </div>
+		  <div class="title-content">		  
+		    <ul>
+		      <li class="reading-ioc">0</li>
+		      <li class="reading-content"><a href="#" onclick="addTaskPrepare(this)">+ Add New tasks</a></li>		      
+	        </ul>
+	      </div>
+		</div>
+		<div class="reading-green">
+		 <div class="title-content">		  
+		    <ul>
+		      <li class="reading-ioc"><img src="../public/images/down.png"></li>
+		      <li class="reading-title">Complete</li>
+		      <li class="reading-choice">0</li>
+			  <li class="title-time">Completion time</li>
+			  <li class="title-date">Due date</li>
+	        </ul>
+	      </div>
+		  <div class="title-content">		  
+		    <ul>
+				<li class="reading-ioc"><img src="../public/images/priority_0.png" onmouseover="showPriority(this)"></li>
+				<li class="reading-content">something</li>
+				<li class="reading-choice"><a href="#"><img src="../public/images/pic9.png" ></a></li>
+				<li class="title-time">0days</li>
+				<li class="title-date">2022-06-01</li>
+			  </ul>
+	      </div>
+		  <div class="title-content">		  
+		    <ul>
+		      <li class="reading-ioc"><img src="../public/images/priority_0.png" onmouseover="showPriority(this)"></li>
+		      <li class="reading-content">something</li>
+		      <li class="reading-choice"><a href="#"><img src="../public/images/pic9.png"></a></li>
+			  <li class="title-time">0days</li>
+			  <li class="title-date">2022-06-01</li>
+	        </ul>
+	      </div>
+		</div>
+	</div>
+</div>
+<script>
+
+	window.onload = function(){
+		
+		let priorityList = document.querySelectorAll('img.priority-ico');
+		for(let i = 0 ; i < priorityList.length ; i ++){
+			let priorityElem = priorityList[i];
+			priorityElem.addEventListener('click', () => {
+				this.parentNode.parentNode.parentNode.insertAdjacentHTML('beforebegin', getPopTemp());
+			});
+		}
+	}
+
+	function getTemp(){
+		let temp = `
+		<div class="title-content" id="addTask">		  
+		    <ul>
+		      <li class="reading-ioc"><img src="../public/images/priority_0.png"></li>
+		      <li class="reading-content"><input type="text" placeholder="Task" name="taskName" id="taskName"/></li>
+		      <li class="reading-choice"><a href="#"><img src="../public/images/pic9.png" ></a></li>
+			  <li class="title-time"><input type="date" placeholder="Due Date" name="dueDate" id="dueDate"/></li>
+			  <li class="title-date"><button type="button" onclick="addTask()" id="saveBut">Save</button></li>
+	        </ul>
+	      </div>
+		`;
+		return temp ;
+	}
+
+	function getPopTemp(){
+		let temp = `
+		<div class="reading-Popup" onmouseleave="hidePriority(this)">
+		  <ul>
+		    <li class="red" onclick="changePriority(this,1)">High Priority</li>
+		    <li class="blue" onclick="changePriority(this,2)">Medium Priority</li>
+		    <li class="green" onclick="changePriority(this,3)">Low Priority</li>
+	      </ul>
+	    </div>
+		`;
+		return temp ;
+	}
+
+	function showPriority(thiz){
+		let temp = getPopTemp();
+		thiz.parentNode.parentNode.parentNode.insertAdjacentHTML('beforebegin', temp);
+	}
+
+	function hidePriority(thiz){
+		thiz.parentNode.removeChild(thiz);
+	}
+
+	//change Priority
+	function changePriority(thiz,priority){
+
+	}
+
+	function addTaskPrepare(thiz){
+		let newRecord = document.getElementById("addTask");
+		if(newRecord){
+			alert("Only one task can be added at a time");
+			return ;
+		}
+		// let list = document.querySelector("div.reading-blue").getElementsByTagName("div");
+		// let listLength = list.length ;
+		let newDiv = thiz.parentNode.parentNode.parentNode;
+		let temp = getTemp();
+		//alert(temp)
+		newDiv.insertAdjacentHTML('beforebegin', temp);
+	}
+
+	//save task
+	function addTask(){
+		let taskName = document.getElementById("taskName").value.trim();
+		let dueDate = document.getElementById("dueDate").value.trim();
+		if(!taskName){
+			alert("Please enter task name");
+			return ;
+		}
+		if(!dueDate){
+			alert("Please select Due Date");
+			return ;
+		}
+		//save data 
+
+		//replace data 
+		let now = new Date().format('yyyy-MM-dd hh:mm:ss') ;
+		let dueDateStr = new Date(dueDate).format('yyyy-MM-dd hh:mm:ss') ;
+		let diffTim = diffTime(dueDateStr,now);
+		document.getElementById("taskName").parentNode.parentNode.parentNode.removeAttribute("id");
+		document.getElementById("taskName").parentNode.innerHTML = taskName;
+		document.getElementById("dueDate").parentNode.innerHTML = diffTim;
+		document.getElementById("saveBut").parentNode.innerHTML = dueDate;
+		
+	}
+</script>
+</body>
+</html>
