@@ -48,6 +48,10 @@ You don't need too many grids to start with.  So I cut out some of the original 
 ![Figure 8](readme/8.png)
 ![Figure 9](readme/9.png)
 
+### Mobile Interface
+I abandoned the mobile interface style I had designed and opted for the desktop web style.  Let the page display different proportions of the page depending on the device, but the basic style is the same.  As shown in figure 10. 
+![Figure 11](readme/10.jpg)
+
 ## Reference-list
 ***
 1. Time Management for Students Matrix.(2017). Retrieved from [https://www.triplem.com.au/story/change-the-course-of-a-child-s-life-this-christmas-with-the-smith-family-153163](http://www.mytimemanagement.com/time-management-for-students.html)
