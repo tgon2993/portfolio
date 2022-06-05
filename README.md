@@ -50,7 +50,7 @@ You don't need too many grids to start with.  So I cut out some of the original 
 
 ### Mobile Interface
 I abandoned the mobile interface style I had designed and opted for the desktop web style.  Let the page display different proportions of the page depending on the device, but the basic style is the same.  As shown in figure 10. 
-![Figure 11](readme/10.jpg)
+![Figure 10](readme/10.jpg)
 
 ## Reference-list
 ***
