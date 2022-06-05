@@ -3,7 +3,7 @@
     "version": "0.0.0",
     "private": true,
     "scripts": {
-        "start": "nodemon ./bin/www"
+        "start": "node ./app"
     },
     "dependencies": {
         "cookie-parser": "~1.4.4",
@@ -15,3 +15,4 @@
         "morgan": "~1.9.1"
     }
 }
+

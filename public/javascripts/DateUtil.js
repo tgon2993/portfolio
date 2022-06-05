@@ -25,21 +25,21 @@ Date.prototype.format =function(format){
 }
 
 function diffTime(strDate1,strDate2){
-    let new_date = new Date(strDate1); //新建一个日期对象，默认现在的时间
-	let old_date = new Date(strDate2); //设置过去的一个时间点，"yyyy-MM-dd HH:mm:ss"格式化日期
+    let new_date = new Date(strDate1); //Create a new date object. Default is the current time
+	let old_date = new Date(strDate2); //Sets a time point in the past，"yyyy-MM-dd HH:mm:ss"Formatting date
 	
-	let difftime = (new_date - old_date)/1000; //计算时间差,并把毫秒转换成秒
+	let difftime = (new_date - old_date)/1000; //Calculate the time difference and convert milliseconds to seconds
 	
-	let days = parseInt(difftime/86400); // 天  24*60*60*1000 
-    let hours = parseInt(difftime/3600)-24*days;    // 小时 60*60 总小时数-过去的小时数=现在的小时数 
-    let minutes = parseInt(difftime%3600/60); // 分钟 -(day*24) 以60秒为一整份 取余 剩下秒数 秒数/60 就是分钟数
-    let seconds = parseInt(difftime%60);  // 以60秒为一整份 取余 剩下秒数
+	let days = parseInt(difftime/86400); // Day  24*60*60*1000 
+    let hours = parseInt(difftime/3600)-24*days;    // Hours 60 * 60 Total hours - Past hours = present hours
+    let minutes = parseInt(difftime%3600/60); // Minutes -(day*24) Take 60 seconds as a full portion, take the remainder, the number of seconds left, seconds /60 is the number of minutes  
+    let seconds = parseInt(difftime%60);  // Take the remainder of the 60-second portion, the number of seconds left
 
     let diffTim = days+"days,"+hours+"hours";
-    if(days < 0 && hours < 0){
+    if(days <= 0 && hours <= 0){
         return "0day,0hour" ;
     }
-   	//alert("时间差是: " + diffTim);	
+   	//alert("time difference is: " + diffTim);	
     return diffTim ;
 }
 

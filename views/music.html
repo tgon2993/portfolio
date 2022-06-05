@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
 <title>Music</title>
-<link href="../public/stylesheets/studbud.css" rel="stylesheet" type="text/css" />
-<link rel="shortcut icon" href="../favicon.ico" />
-<script src="../public/javascripts/DateUtil.js"></script>
+<link href="/stylesheets/studbud.css" rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<script src="/javascripts/DateUtil.js"></script>
 </head>
 
 <body>
 <div class="home-box">
 	<div class="home-left">
-		<div class="logo-box"><a href="home.html"><img src="../public/images/logo.png" alt="" /></a></div>
+		<div class="logo-box"><a href="home.html"><img src="/images/logo.png" alt="" /></a></div>
 		<div class="list1"><a href="home.html">Home</a></div>
 		<div class="list2"><a href="task.html">Task</a></div>
 		<div class="list3"><a href="timer1.html">Timer</a></div>
@@ -20,8 +20,8 @@
 	<div class="home-right">
 		<div class="right-top">
 			<p>StudBud - Music</p>						
-			<div class="picture"><a href="#"><img src="../public/images/picture.png"  /></a></div>
-			<div class="news"><a href="#"><img src="../public/images/news.png"  /></a></div>
+			<div class="picture"><a href="#"><img src="/images/picture.png"  /></a></div>
+			<div class="news"><a href="#"><img src="/images/news.png"  /></a></div>
 		</div>
 		<div class="music-list">
 			<div class="music-mark"></div>
@@ -45,34 +45,34 @@
 			  	<div class="order">1</div>
 				 <div class="song">Born To Try</div>
 				 <div class="play">
-					 <a href="#"><img src="../public/images/broadcast.png" class="playBut" onclick="autoPlay(this,1)"/></a>
-					 <audio src="../public/music/Born_to_Try_Delta_Goodrem.mp3" id="myAudio1" controls="controls" loop="false" hidden="true"></audio>
+					 <a href="#"><img src="/images/broadcast.png" class="playBut" onclick="autoPlay(this,1)"/></a>
+					 <audio src="/music/Born_to_Try_Delta_Goodrem.mp3" id="myAudio1" controls="controls" loop="false" hidden="true"></audio>
 				</div>
 				 <div class="singer">Delta Goodrem</div>
 				 <div class="adddate">Today</div>
-				 <div class="duration">00:00</div>
+				 <div class="duration">04:05</div>
 			  </li>
 			  <li>
 			  	<div class="order">2</div>
 				 <div class="song">Goodbye My Lover</div>
 				 <div class="play">
-					 <a href="#"><img src="../public/images/broadcast.png" class="playBut" onclick="autoPlay(this,2)" /></a>
-					 <audio src="../public/music/Goodbye_My_Lover_James_Blunt.mp3" id="myAudio2" controls="controls" loop="false" hidden="true"></audio>
+					 <a href="#"><img src="/images/broadcast.png" class="playBut" onclick="autoPlay(this,2)" /></a>
+					 <audio src="/music/Goodbye_My_Lover_James_Blunt.mp3" id="myAudio2" controls="controls" loop="false" hidden="true"></audio>
 				</div>
 				 <div class="singer">James Blunt</div>
 				 <div class="adddate">3 days ago</div>
-				 <div class="duration">00:00</div>
+				 <div class="duration">04:18</div>
 			  </li>
 			  <li>
 				<div class="order">3</div>
 			   <div class="song">Still Here</div>
 			   <div class="play">
-				   <a href="#"><img src="../public/images/broadcast.png" class="playBut" onclick="autoPlay(this,3)" /></a>
-				   <audio src="../public/music/Still_Here_Lene_Marlin.mp3" id="myAudio3" controls="controls" loop="false" hidden="true">aaaa</audio>
+				   <a href="#"><img src="/images/broadcast.png" class="playBut" onclick="autoPlay(this,3)" /></a>
+				   <audio src="/music/Still_Here_Lene_Marlin.mp3" id="myAudio3" controls="controls" loop="false" hidden="true">aaaa</audio>
 			  </div>
 			   <div class="singer">Lene Marlin</div>
 			   <div class="adddate">2 days ago</div>
-			   <div class="duration">00:00</div>
+			   <div class="duration">03:41</div>
 			  </li>
 			  <!-- <li class="newsong">
 			  	<div class="order">0</div>
@@ -90,8 +90,8 @@
 			for(let i = 0 ; i < audioList.length ; i ++){
 				let audio = audioList[i];
 				let duration = audio.duration ;
-				duration = (parseInt(duration / 60) < 10 ?  "0" + parseInt(duration / 60): parseInt(duration / 60)) + " : " + (parseInt(duration % 60) < 10 ? "0"+parseInt(duration % 60):parseInt(duration % 60) );
-				durationList[i+1].innerHTML = duration ;
+			//	duration = (parseInt(duration / 60) < 10 ?  "0" + parseInt(duration / 60): parseInt(duration / 60)) + " : " + (parseInt(duration % 60) < 10 ? "0"+parseInt(duration % 60):parseInt(duration % 60) );
+			//	durationList[i+1].innerHTML = duration ;
 			}
 		}
 		
@@ -152,7 +152,7 @@
 			let orderNo = liList.length - 2 ;
 			let audioHtml = '<audio src="{link}" id="myAudio{orderNo}" controls="controls" loop="false" hidden="true"></audio>' ;
 			audioHtml = audioHtml.replace("{link}",musicLink).replace("{orderNo}",orderNo);
-			let imgButHtml = '<a href="#"><img src="../public/images/broadcast.png" class="playBut" onclick="autoPlay(this,{orderNo}})" /></a>'.replace("{orderNo}",orderNo) ;
+			let imgButHtml = '<a href="#"><img src="/images/broadcast.png" class="playBut" onclick="autoPlay(this,{orderNo}})" /></a>'.replace("{orderNo}",orderNo) ;
 			document.getElementById("musicLink").parentNode.parentNode.removeAttribute("id");
 			document.getElementById("musicLink").parentNode.innerHTML = songName;
 			document.getElementById("songName").parentNode.innerHTML = imgButHtml + audioHtml;

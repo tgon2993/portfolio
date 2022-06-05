@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
 <title>Task</title>
-<link href="../public/stylesheets/studbud.css" rel="stylesheet" type="text/css" />
-<link rel="shortcut icon" href="../favicon.ico" />
-<script src="../public/javascripts/DateUtil.js"></script>
+<link href="/stylesheets/studbud.css" rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<script src="/javascripts/DateUtil.js"></script>
 </head>
 
 <body>
 <div class="home-box">
 	<div class="home-left">
-		<div class="logo-box"><a href="home.html"><img src="../public/images/logo.png" alt="" /></a></div>
+		<div class="logo-box"><a href="home.html"><img src="/images/logo.png" alt="" /></a></div>
 		<div class="list1"><a href="home.html">Home</a></div>
 		<div class="list2-current"><a href="task.html">Task</a></div>
 		<div class="list3"><a href="timer1.html">Timer</a></div>
@@ -20,98 +20,70 @@
 	<div class="home-right">
 		<div class="right-top">
 			<p>StudBud - Task</p>						
-			<div class="picture"><a href="#"><img src="../public/images/picture.png" alt="" /></a></div>
-			<div class="news"><a href="#"><img src="../public/images/news.png" alt="" /></a></div>
+			<div class="picture"><a href="#"><img src="/images/picture.png" alt="" /></a></div>
+			<div class="news"><a href="#"><img src="/images/news.png" alt="" /></a></div>
 		</div>
-		<div class="search-box">
+		<!-- <div class="search-box">
 			<div class="search-frame">
-			<a href="#"><img src="../public/images/search.png"></a>
+			<a href="#"><img src="/images/search.png"></a>
 			<input name="" type="text">
 		  </div>
+		</div> -->
+		<div class="reading-add">
+			<div class="title-content" id="addTask">		  
+				<ul>
+				  <li class="reading-content"><input type="text" placeholder="Task" name="Task Name" id="taskName001"/></li>
+				  <li class="reading-choice">Important<a href="#"><img src="/images/pic9.png" id="import001"  onclick="chooseImport(this)" /></a></li>
+				  <li class="title-time"><input type="text" placeholder="Due Date" name="dueDate" id="dueDate001"/></li>
+				  <li class="title-date"><button onclick="saveTask(this)">addTask</button></li>
+				</ul>
+			  </div>
+			
 		</div>
-		<div class="reading-red">						
+
+		<div class="reading-red" id="task1">						
 		  <div class="title-content">		  
 		    <ul>
-		      <li class="reading-ioc" ><img src="../public/images/down.png"></li>
-		      <li class="reading-title">Close to Deadline</li>
+		      <li class="reading-title" onclick="editData1(this)">Important and urgent</li>
 		      <li class="reading-choice">0</li>
 			  <li class="title-time">Completion time</li>
 			  <li class="title-date">Due date</li>
 	        </ul>
 	      </div>
-		  <div class="title-current">		  
-		    <ul>
-		      <li class="reading-ioc"><img src="../public/images/priority_1.png" onmouseover="showPriority(this)"></li>
-		      <li class="reading-content">Cloes omr dsdgoing</li>
-		      <li class="reading-choice"><a href="#"><img src="../public/images/pic10.png" ></a></li>
-			  <li class="title-time">3day,10hours</li>
-			  <li class="title-date">2022-06-06</li>
-	        </ul>
-	      </div>
-		  <div class="title-content">		  
-		    <ul>
-		      <li class="reading-ioc"><img src="../public/images/priority_0.png" onmouseover="showPriority(this)"></li>
-		      <li class="reading-content">Cloes omr dsdgoing</li>
-		      <li class="reading-choice"><a href="#"><img src="../public/images/pic9.png" ></a></li>
-			  <li class="title-time">3day,10hours</li>
-			  <li class="title-date">2022-06-06</li>
-	        </ul>
-	      </div>
-		  <div class="title-content">		  
-		    <ul>
-		      <li class="reading-ioc"><img src="../public/images/priority_0.png" onmouseover="showPriority(this)"></li>
-		      <li class="reading-content">Cloes omr dsdgoing</li>
-		      <li class="reading-choice"><a href="#"><img src="../public/images/pic9.png" ></a></li>
-			  <li class="title-time">3day,10hours</li>
-			  <li class="title-date">2022-06-06</li>
-	        </ul>
-	      </div>
-		  <div class="title-content">		  
-		    <ul>
-		      <li class="reading-ioc">0</li>
-		      <li class="reading-content"><a href="#" onclick="addTaskPrepare(this)">+ Add New tasks</a></li>		      
-	        </ul>
-	      </div>		 
 	    </div>
-		<div class="reading-blue">
+		<div class="reading-blue" id="task2">
 		 <div class="title-content">		  
 		    <ul>
-		      <li class="reading-ioc"><img src="../public/images/down.png"></li>
-		      <li class="reading-title">In Progress</li>
+		      <li class="reading-title" onclick="editData1(this)">Important but not urgent</li>
 		      <li class="reading-choice">0</li>
 			  <li class="title-time">Completion time</li>
 			  <li class="title-date">Due date</li>
 	        </ul>
 	      </div>
-		  <div class="title-content">		  
-		    <ul>
-		      <li class="reading-ioc"><img src="../public/images/priority_0.png" onmouseover="showPriority(this)"></li>
-		      <li class="reading-content">Cloes omr dsdgoing</li>
-		      <li class="reading-choice"><a href="#"><img src="../public/images/pic9.png" ></a></li>
-			  <li class="title-time">3day,10hours</li>
-			  <li class="title-date">2022-06-06</li>
-	        </ul>
-	      </div>
-		  <div class="title-content">		  
-		    <ul>
-		      <li class="reading-ioc"><img src="../public/images/priority_0.png" onmouseover="showPriority(this)"></li>
-		      <li class="reading-content">Cloes omr dsdgoing</li>
-		      <li class="reading-choice"><a href="#"><img src="../public/images/pic9.png" ></a></li>
-			  <li class="title-time">3day,10hours</li>
-			  <li class="title-date">2022-06-06</li>
-	        </ul>
-	      </div>
-		  <div class="title-content">		  
-		    <ul>
-		      <li class="reading-ioc">0</li>
-		      <li class="reading-content"><a href="#" onclick="addTaskPrepare(this)">+ Add New tasks</a></li>		      
-	        </ul>
-	      </div>
 		</div>
+		<div class="reading-red" id="task3">						
+			<div class="title-content">		  
+			  <ul>
+				<li class="reading-title" onclick="editData1(this)">Urgent but not important</li>
+				<li class="reading-choice">0</li>
+				<li class="title-time">Completion time</li>
+				<li class="title-date">Due date</li>
+			  </ul>
+			</div>
+		  </div>
+		  <div class="reading-blue"  id="task4">
+		   <div class="title-content">		  
+			  <ul>
+				<li class="reading-title" onclick="editData1(this)">not important and not urgent</li>
+				<li class="reading-choice">0</li>
+				<li class="title-time">Completion time</li>
+				<li class="title-date">Due date</li>
+			  </ul>
+			</div>
+		  </div>
 		<div class="reading-green">
 		 <div class="title-content">		  
 		    <ul>
-		      <li class="reading-ioc"><img src="../public/images/down.png"></li>
 		      <li class="reading-title">Complete</li>
 		      <li class="reading-choice">0</li>
 			  <li class="title-time">Completion time</li>
@@ -120,26 +92,88 @@
 	      </div>
 		  <div class="title-content">		  
 		    <ul>
-				<li class="reading-ioc"><img src="../public/images/priority_0.png" onmouseover="showPriority(this)"></li>
-				<li class="reading-content">something</li>
-				<li class="reading-choice"><a href="#"><img src="../public/images/pic9.png" ></a></li>
+				<li class="reading-content">Challenge</li>
+				<li class="reading-choice"><a href="#"><img src="/images/pic11.png" /></a></li>
 				<li class="title-time">0days</li>
 				<li class="title-date">2022-06-01</li>
 			  </ul>
-	      </div>
-		  <div class="title-content">		  
-		    <ul>
-		      <li class="reading-ioc"><img src="../public/images/priority_0.png" onmouseover="showPriority(this)"></li>
-		      <li class="reading-content">something</li>
-		      <li class="reading-choice"><a href="#"><img src="../public/images/pic9.png"></a></li>
-			  <li class="title-time">0days</li>
-			  <li class="title-date">2022-06-01</li>
-	        </ul>
 	      </div>
 		</div>
 	</div>
 </div>
 <script>
+
+	function chooseImport(thiz){
+		let src = thiz.getAttribute("src");
+		if(src.indexOf("pic9.png")!=-1){
+			thiz.setAttribute("src",src.replace("pic9.png","pic10.png"));
+		}else{
+			thiz.setAttribute("src",src.replace("pic10.png","pic9.png"));
+		}
+	}
+
+	function saveTask(thiz){
+		let taskName = document.getElementById("taskName001").value.trim();
+		if(!taskName){
+			alert("please input task name");
+			return ;
+		}
+		let dueDate = document.getElementById("dueDate001").value.trim();
+		if(!dueDate){
+			alert("please input dueDate");
+			return ;
+		}
+		if(!isDate(dueDate)){
+			alert("Illegal due date \n The legal format is: YYYY-MM-DD");
+			return ;
+		}
+
+		let now = new Date().format('yyyy-MM-dd hh:mm:ss') ;
+		let dueDateStr = new Date(dueDate).format('yyyy-MM-dd hh:mm:ss') ;
+		let diffTim = diffTime(dueDateStr,now);
+		if(diffTim == '0day,0hour'){
+			alert("Date must be later than today");
+			return ;
+		}
+		let urgent = (Number(diffTim.split("day")[0]) <= 3);
+
+		let importment = document.getElementById("import001").getAttribute("src").indexOf("pic10.png")!=-1 ? true : false ;
+
+		let temp2 = getTemp2();
+		temp2 = temp2.replace("{taskName}",taskName).replace("{dueDate}",dueDate).replace("{diffTim}",diffTim);
+		if(importment && urgent){
+			document.getElementById("task1").insertAdjacentHTML('beforeend', temp2);
+		}else if(importment && !urgent){
+			document.getElementById("task2").insertAdjacentHTML('beforeend', temp2);
+		}else if( !importment &&  urgent){
+			document.getElementById("task3").insertAdjacentHTML('beforeend', temp2);
+		}else{
+			document.getElementById("task4").insertAdjacentHTML('beforeend', temp2);
+		}
+
+	}
+
+	function getTaskListTemp(){
+		let temp = `
+		<div class="reading-new">
+		 <div class="title-content">		  
+		    <ul>
+		      <li class="reading-title" onclick="editData1(this)"><input type="text" placeholder="list name"/></li>
+		      <li class="reading-choice">0</li>
+			  <li class="title-time">Completion time</li>
+			  <li class="title-date">Due date</li>
+	        </ul>
+	      </div>
+		  <div class="title-content">		  
+		    <ul>
+		      <li class="reading-ioc">0</li>
+		      <li class="reading-content"><a href="#" onclick="addTaskPrepare(this)">+ Add New tasks</a></li>		      
+	        </ul>
+	      </div>
+		</div>
+		`;
+		return temp ;
+	}
 
 	window.onload = function(){
 		
@@ -147,8 +181,86 @@
 		for(let i = 0 ; i < priorityList.length ; i ++){
 			let priorityElem = priorityList[i];
 			priorityElem.addEventListener('click', () => {
-				this.parentNode.parentNode.parentNode.insertAdjacentHTML('beforebegin', getPopTemp());
+				this.parentNode.parentNode.parentNode.insertAdjacentHTML('beforebegin', getPriorityTemp());
 			});
+		}
+
+		let dateList = document.querySelectorAll("li.title-date");
+		let now = new Date().format('yyyy-MM-dd hh:mm:ss') ;
+		for(let i = 0 ; i < dateList.length ; i ++){
+			let dateStr = dateList[i].innerHTML ;
+			if(isDate(dateStr)){//
+				let dueDateStr = new Date(dateStr).format('yyyy-MM-dd hh:mm:ss') ;
+				let diffTim = diffTime(dueDateStr,now);
+				dateList[i].previousElementSibling.innerHTML = diffTim ;
+			}
+		}
+
+	}
+
+	function addTaskList(){
+		let temp = getTaskListTemp();
+		let greenEl = document.querySelector("div.reading-green");
+		greenEl.insertAdjacentHTML('beforebegin', temp);
+	}
+
+	function finishTask(thiz){
+		let imgEl = thiz.getElementsByTagName("img")[0];
+		let srcImg = imgEl.getAttribute("src").replace("pic9.png","pic11.png");
+		imgEl.setAttribute("src",srcImg);
+		let divEl = thiz.parentNode.parentNode ;
+		document.querySelector("div.reading-green").appendChild(divEl);
+	}
+
+	function editData1(thiz) {
+		let activeInput = document.getElementsByClassName('active-input');
+		let inputEl = thiz.getElementsByTagName("input");
+		if(activeInput.length > 0){
+			return ;
+		}
+		let data = inputEl.length > 0 ? inputEl[0].value : thiz.innerHTML;
+		let input = inputEl.length > 0 ? inputEl[0] : document.createElement("input");
+		input.value = data ;
+		input.setAttribute("class", "active-input");
+		thiz.innerHTML = '';
+        thiz.appendChild(input);
+		input.focus();
+		input.onblur = function(){
+			let name = input.value;
+			if(!name.trim()){
+				alert("Please enter the task Name");
+				//input.focus();
+				return ;
+			}
+		    thiz.innerHTML = name;
+		}
+	}
+
+	function editData2(thiz) {
+		let activeInput = document.getElementsByClassName('active-input');
+		let inputEl = thiz.getElementsByTagName("input");
+		if(activeInput.length > 0){
+			return ;
+		}
+		let data = inputEl.length > 0 ? inputEl[0].value : thiz.innerHTML;
+		var input = inputEl.length > 0 ? inputEl[0] : document.createElement("input");
+		input.value = data ;
+		input.setAttribute("class", "active-input");
+		thiz.innerHTML = '';
+        thiz.appendChild(input);
+		input.focus();
+		input.onblur = function(){
+			let dueDate = input.value;
+			if(!isDate(dueDate)){
+				alert("Illegal due date \n The legal format is: YYYY-MM-DD");
+				return ;
+			}
+		    thiz.innerHTML = dueDate;
+			let now = new Date().format('yyyy-MM-dd hh:mm:ss') ;
+			let dueDateStr = new Date(dueDate).format('yyyy-MM-dd hh:mm:ss') ;
+			let diffTim = diffTime(dueDateStr,now);
+			thiz.previousElementSibling.innerHTML = diffTim ;
+			thiz.parentNode.parentNode.removeAttribute("id");
 		}
 	}
 
@@ -156,18 +268,32 @@
 		let temp = `
 		<div class="title-content" id="addTask">		  
 		    <ul>
-		      <li class="reading-ioc"><img src="../public/images/priority_0.png"></li>
-		      <li class="reading-content"><input type="text" placeholder="Task" name="taskName" id="taskName"/></li>
-		      <li class="reading-choice"><a href="#"><img src="../public/images/pic9.png" ></a></li>
-			  <li class="title-time"><input type="date" placeholder="Due Date" name="dueDate" id="dueDate"/></li>
-			  <li class="title-date"><button type="button" onclick="addTask()" id="saveBut">Save</button></li>
+		      <li class="reading-content"  onclick="editData1(this)"><input type="text" placeholder="Task" name="Task Name" id="taskName"/></li>
+		      <li class="reading-choice" onclick="finishTask(this)"><a href="#"><img src="/images/pic9.png" /></a></li>
+			  <li class="title-time">0day,0hour</li>
+			  <li class="title-date"  onclick="editData2(this)"><input type="text" placeholder="Due Date" name="dueDate" id="dueDate"/></li>
 	        </ul>
 	      </div>
 		`;
 		return temp ;
 	}
 
-	function getPopTemp(){
+	
+	function getTemp2(){
+		let temp = `
+		<div class="title-content" id="addTask">		  
+		    <ul>
+		      <li class="reading-content">{taskName}</li>
+		      <li class="reading-choice" onclick="finishTask(this)"><a href="#"><img src="/images/pic9.png" /></a></li>
+			  <li class="title-time">{diffTim}</li>
+			  <li class="title-date">{dueDate}</li>
+	        </ul>
+	      </div>
+		`;
+		return temp ;
+	}
+
+	function getPriorityTemp(){
 		let temp = `
 		<div class="reading-Popup" onmouseleave="hidePriority(this)">
 		  <ul>
@@ -181,7 +307,7 @@
 	}
 
 	function showPriority(thiz){
-		let temp = getPopTemp();
+		let temp = getPriorityTemp();
 		thiz.parentNode.parentNode.parentNode.insertAdjacentHTML('beforebegin', temp);
 	}
 
@@ -191,7 +317,7 @@
 
 	//change Priority
 	function changePriority(thiz,priority){
-
+		thiz.parentNode.parentNode.nextElementSibling.getElementsByTagName("li")[0].firstChild.setAttribute("src","/images/priority_"+priority+".png");
 	}
 
 	function addTaskPrepare(thiz){
@@ -206,6 +332,12 @@
 		let temp = getTemp();
 		//alert(temp)
 		newDiv.insertAdjacentHTML('beforebegin', temp);
+		divEl = document.getElementById("addTask");
+		let liEms = divEl.getElementsByTagName("li");
+		//alert(liEms.length)
+		// liEms[0].click();
+		liEms[1].click();
+		liEms[4].click();
 	}
 
 	//save task
@@ -221,7 +353,6 @@
 			return ;
 		}
 		//save data 
-
 		//replace data 
 		let now = new Date().format('yyyy-MM-dd hh:mm:ss') ;
 		let dueDateStr = new Date(dueDate).format('yyyy-MM-dd hh:mm:ss') ;

@@ -82,8 +82,10 @@ ul{	list-style-type: none;}
 .reading-red{background-image: url(../images/pic1.png);background-repeat: no-repeat;background-position: left top;}
 .reading-green{background-image: url(../images/pic3.png);background-repeat: no-repeat;background-position: left top;}
 
-.reading-add{width:230px;background-color:#FFFFFF;border-radius:15px;margin-bottom:30px;font-family:"Segoe UI Symbol";font-size:20px;color:#707070;font-weight:bold;display:table;}
-.reading-add button{width: 230px; height:35px;line-height:35px;font-size:25px;}
+.reading-add{background-color:#FFFFFF;border-radius:15px;margin-bottom:30px;font-family:"Segoe UI Symbol";font-size:20px;color:#707070;font-weight:bold;display:table;}
+.reading-add input,.reading-add button{width: 75%; height:35px;line-height:35px;font-size:25px;}
+.reading-add .reading-choice{width:14%;border-right:solid 3px #EDEDE9;font-size: 15px;height:54px;}
+.reading-add .title-date{width:15%;font-size: 15px;height:54px;}
 
 .reading-red div {float: left;}
 .reading-red input,.reading-red button{width: 90%; height:35px;line-height:35px;font-size:25px;}
